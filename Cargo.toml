@@ -1,0 +1,18 @@
+[package]
+name = "kv-cache-allocator"
+version = "0.1.0"
+edition = "2021"
+authors = ["sh1v-ansh <shivanshsoni321@gmail.com>"]
+description = "PagedAttention-inspired KV cache allocator in Rust"
+license = "MIT"
+
+[lib]
+name = "kv_cache_allocator"
+crate-type = ["rlib"]
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "alloc_bench"
+harness = false
