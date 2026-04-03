@@ -3,12 +3,20 @@ name = "kv-cache-allocator"
 version = "0.1.0"
 edition = "2021"
 authors = ["sh1v-ansh <shivanshsoni321@gmail.com>"]
-description = "PagedAttention-inspired KV cache allocator in Rust"
+description = "PagedAttention-inspired KV cache allocator: O(1) alloc/dealloc via free-list with block reference counting. Python bindings via PyO3."
 license = "MIT"
+repository = "https://github.com/sh1v-ansh/kv-cache-allocator"
 
 [lib]
 name = "kv_cache_allocator"
-crate-type = ["rlib"]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = []
+python = ["pyo3/extension-module"]
+
+[dependencies]
+pyo3 = { version = "0.23", optional = true, features = ["abi3-py39"] }
 
 [dev-dependencies]
 criterion = { version = "0.5", features = ["html_reports"] }
